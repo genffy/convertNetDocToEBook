@@ -1,0 +1,22 @@
+{
+  "name": "convertNetDocToEBook",
+  "version": "0.1.0",
+  "description": "convertNetDocToEBook",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Genffy/convertNetDocToEBook.git"
+  },
+  "author": "@genffy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Genffy/convertNetDocToEBook/issues"
+  },
+  "homepage": "https://github.com/Genffy/convertNetDocToEBook",
+  "devDependencies": {
+    "coffee-script": "^1.10.0"
+  }
+}
