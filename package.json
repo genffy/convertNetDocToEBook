@@ -16,7 +16,9 @@
     "url": "https://github.com/Genffy/convertNetDocToEBook/issues"
   },
   "homepage": "https://github.com/Genffy/convertNetDocToEBook",
-  "devDependencies": {
-    "coffee-script": "^1.10.0"
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "jsdom": "^3.1.2"
   }
 }
