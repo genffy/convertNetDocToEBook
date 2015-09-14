@@ -19,6 +19,7 @@
   "devDependencies": {},
   "dependencies": {
     "jquery": "^2.1.4",
-    "jsdom": "^3.1.2"
+    "jsdom": "^3.1.2",
+    "phantom": "^0.7.2"
   }
 }
