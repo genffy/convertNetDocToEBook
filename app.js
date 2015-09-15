@@ -11,7 +11,8 @@ var http = require("http"),
 var baseUrl = "laravel.com",
     basePath = "/docs/5.1",
     paths = [],
-    htmlSrc = __dirname +"/html_src/";
+    htmlSrc = __dirname +"/html_src/",
+    ebookDir = __dirname + "/ebook/";
 
 var opt = {
     host: baseUrl,
@@ -80,19 +81,19 @@ function callback(response){
             });
         }
         console.log(paths.length);
-        //for(var i=0, len = paths.length; i<len; i++){
-        //    (function(opt){
-        //        http.get(opt, function(res){
-        //            var html = "";
-        //            res.on("data", function(chunk){
-        //                html+=chunk;
-        //            });
-        //            res.on("end", function(){
-        //                saveContent(opt, html);
-        //            });
-        //        });
-        //    })(paths[i]);
-        //}
+//        for(var i=0, len = paths.length; i<len; i++){
+//            (function(opt){
+//                http.get(opt, function(res){
+//                    var html = "";
+//                    res.on("data", function(chunk){
+//                        html+=chunk;
+//                    });
+//                    res.on("end", function(){
+//                        saveContent(opt, html);
+//                    });
+//                });
+//            })(paths[i]);
+//        }
     });
 }
 
@@ -111,12 +112,9 @@ var count = 0, interVal = setInterval(function(){
                 (function(opt){
                     phantom.create(function(ph){
                         ph.createPage(function(page) {
-                            page.open(opt.host+opt.path, function(status) {
-                                if(status === "success"){
-                                    var title = page.evaluate(function() {
-                                        return document.title;
-                                    });
-                                    page.render(title+'.pdf', function(){
+			    page.open("http://"+opt.host+opt.path, function(status) {
+				if(status === "success"){
+                                    page.render(ebookDir+opt.subTitle+'.pdf', function(){
                                         console.log('Page Rendered');
                                         opt.status = 1;
                                         ph.exit();
