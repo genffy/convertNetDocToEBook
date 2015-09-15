@@ -81,19 +81,19 @@ function callback(response){
             });
         }
         console.log(paths.length);
-//        for(var i=0, len = paths.length; i<len; i++){
-//            (function(opt){
-//                http.get(opt, function(res){
-//                    var html = "";
-//                    res.on("data", function(chunk){
-//                        html+=chunk;
-//                    });
-//                    res.on("end", function(){
-//                        saveContent(opt, html);
-//                    });
-//                });
-//            })(paths[i]);
-//        }
+        for(var i=0, len = paths.length; i<len; i++){
+            (function(opt){
+                http.get(opt, function(res){
+                    var html = "";
+                    res.on("data", function(chunk){
+                        html+=chunk;
+                    });
+                    res.on("end", function(){
+                        saveContent(opt, html);
+                    });
+                });
+            })(paths[i]);
+        }
     });
 }
 
@@ -106,14 +106,14 @@ request.end();
 var count = 0, interVal = setInterval(function(){
     if(paths.length){
         clearInterval(interVal);
-        count = paths.length
+        count = paths.length;
         for(var i=0, len = paths.length; i<len; i++){
             if(!paths[i].status){
                 (function(opt){
                     phantom.create(function(ph){
                         ph.createPage(function(page) {
-			    page.open("http://"+opt.host+opt.path, function(status) {
-				if(status === "success"){
+                            page.open("http://"+opt.host+opt.path, function(status) {
+                                if(status === "success"){
                                     page.render(ebookDir+opt.subTitle+'.pdf', function(){
                                         console.log('Page Rendered');
                                         opt.status = 1;
@@ -124,8 +124,6 @@ var count = 0, interVal = setInterval(function(){
                         });
                     });
                 })(paths[i]);
-            }else{
-                continue;
             }
         }
     }
