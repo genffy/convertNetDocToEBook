@@ -112,21 +112,21 @@ var count = 0, interVal = setInterval(function(){
                 (function(opt){
                     phantom.create(function(ph){
                         ph.createPage(function(page) {
-page.set('viewportSize', { width: 1040, height: 800 });			    
-page.open("http://"+opt.host+opt.path, function(status) {
-				if(status === "success"){
-page.getContent(function(ctn){
-//console.log(ctn);
-var $dom = $(ctn);
-$dom.find(".docs-wrapper.container>article").css("margin-left",0);
-$dom.find(".docs-wrapper.container .sidebar").hide();
-$dom.find(".docs-wrapper.container #search").hide();
-$dom.find("nav.main").hide();
-page.setContent(ctn);
-});
-//console.log(page);
- page.render(ebookDir+opt.subTitle+'.pdf', function(){
- console.log('Page Rendered');
+                            page.set('viewportSize', { width: 1040, height: 800 });
+                            page.open("http://"+opt.host+opt.path, function(status) {
+                                if(status === "success"){
+                                    page.getContent(function(ctn){
+                                        //console.log(ctn);
+                                        var $dom = $(ctn);
+                                        $dom.find(".docs-wrapper.container>article").css("margin-left",0);
+                                        $dom.find(".docs-wrapper.container .sidebar").hide();
+                                        $dom.find(".docs-wrapper.container #search").hide();
+                                        $dom.find("nav.main").hide();
+                                        page.setContent(ctn);
+                                    });
+                                    //console.log(page);
+                                    page.render(ebookDir+opt.subTitle+'.pdf', function(){
+                                        console.log('Page Rendered');
                                         opt.status = 1;
                                         ph.exit();
                                     });
